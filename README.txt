@@ -17,3 +17,10 @@ Use with cmake as documented in PCL and OpenNI sites.
 
 openni_init.h contains the openni2_grabber class which has various functions to interact with device's data.
 Please refer to the Documentation folder for refrences.
+
+
+Library Usage:
+
+Create object of the type openni2_grabber. This loads all the necessary modules necessary for interating with the device.
+To use the depth(color) stream  call creatDepthStream() (createColorStream()) function of the object.
+To create both the streams call createDualStreams. Set VideoModes by calling setDepth (Color)Mode() functions.
