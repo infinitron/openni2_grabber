@@ -1,0 +1,9 @@
+﻿Build started 9/22/2013 10:17:11 PM.
+     1>Project "C:\Users\karthik\Documents\Git\OpenNI2_PCL\Win x64 VS2010\OpenNI2 Grabber\OpenNI2 Grabber\OpenNI2 Grabber.vcxproj" on node 2 (clean target(s)).
+     1>_PrepareForClean:
+         Deleting file "x64\Release\OpenNI2 Grabber.lastbuildstate".
+     1>Done Building Project "C:\Users\karthik\Documents\Git\OpenNI2_PCL\Win x64 VS2010\OpenNI2 Grabber\OpenNI2 Grabber\OpenNI2 Grabber.vcxproj" (clean target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.07
