@@ -45,8 +45,6 @@ protected:
 	VideoFrameRef colorFrame;
 	VideoMode defaultDepthMode;
 	VideoMode defaultColorMode;
-	//pcl::visualization::PCLVisualizer viewer;
-	//pcl::visualization::ImageViewer imageViewer;
 };
 
 #endif
