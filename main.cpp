@@ -8,10 +8,11 @@
 int main()
 {
 	std::cout<<"OpenNI2 Grabber\n";
-	openni2_grabber kinect;
-	kinect.createDualStreams();
-	kinect.startPointCloudChangeVisualizer();
-	//kinect.startPCLRGBCloudVisualizer();
+	openni2_grabber kinect;    //Initialize OpenNI2 modules
+	kinect.createDualStreams();  //create Color and Depth Streams
+	//kinect.startPointCloudChangeVisualizer();
+	kinect.startPCLRGBCloudVisualizer(); //start visualizing RGB poit cloud data
 	ReadLastCharOfLine();
 	return 0;
 }
+//The destructor takes care of closing the device and shutting down OpenNI modules
