@@ -1,0 +1,105 @@
+.TH "openni_pcl.h" 3 "Mon Sep 23 2013" "Version 0.1.1.7" "OpenNI2 Grabber" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+openni_pcl.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <iostream>\fP
+.br
+\fC#include <cstdlib>\fP
+.br
+\fC#include <cstdio>\fP
+.br
+\fC#include <sstream>\fP
+.br
+\fC#include <OpenNI\&.h>\fP
+.br
+\fC#include <pcl/common/common_headers\&.h>\fP
+.br
+\fC#include <pcl/common/transforms\&.h>\fP
+.br
+\fC#include <boost/thread/thread\&.hpp>\fP
+.br
+\fC#include <pcl/point_cloud\&.h>\fP
+.br
+\fC#include <pcl/point_types\&.h>\fP
+.br
+\fC#include <pcl/visualization/cloud_viewer\&.h>\fP
+.br
+\fC#include <pcl/visualization/pcl_visualizer\&.h>\fP
+.br
+\fC#include <Eigen/Core>\fP
+.br
+\fC#include <pcl/compression/octree_pointcloud_compression\&.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "char \fBReadLastCharOfLine\fP ()"
+.br
+.RI "\fIFunction to act like a system pause which waits for the user to hit return key\&. \fP"
+.ti -1c
+.RI "bool \fBhandlestatus\fP (Status status)"
+.br
+.RI "\fIError handling\&. \fP"
+.ti -1c
+.RI "pcl::PointCloud< pcl::PointXYZ > \fBcloud_xyz\fP (VideoFrameRef frame, VideoStream &stream)"
+.br
+.RI "\fIPoint cloud converter\&. \fP"
+.ti -1c
+.RI "void \fBprintver\fP ()"
+.br
+.RI "\fIPrints the OpenNI version\&. \fP"
+.ti -1c
+.RI "std::stringstream \fBcloud_xyz_comp\fP (VideoFrameRef frame, VideoStream &stream, bool showstats=true)"
+.br
+.RI "\fICompress the cloud data\&. \fP"
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "pcl::PointCloud<pcl::PointXYZ> cloud_xyz (VideoFrameRefframe, VideoStream &stream)"
+
+.PP
+Point cloud converter\&. Returns a point cloud of the type \fBpcl::PointCloud<pcl::PointXYZ>\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIframe\fP Object of type \fBVideoFrameRef\fP which holds a the depthPixel data 
+.br
+\fI&stream\fP Object of type VideoStream which holds the depthStream 
+.RE
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBopenni2_grabber::startPCLCloudVisualizer()\fP 
+.PP
+\fBopenni2_grabber::getPointCloud()\fP 
+.RE
+.PP
+
+.SS "std::stringstream cloud_xyz_comp (VideoFrameRefframe, VideoStream &stream, boolshowstats = \fCtrue\fP)"
+
+.PP
+Compress the cloud data\&. This function compresses the PointCloud data using the \fBpcl::PointCloudCompression<pcl::PointXYZ>\fP class\&. Returns the compressed data in he form of \fBstd::stringstream\fP\&. The compression profile is \fBpcl::octree::LOW_RES_ONLINE_COMPRESSION_WITHOUT_COLOR\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIframe\fP Object of type VideoFrameRef which holds the depthFrame data 
+.br
+\fI&stream\fP Object of type VideoStream which hold the depthStream 
+.br
+\fIshowstats\fP boolean whether to show the statistics about compression of the PointCloud\&. Default value is true 
+.RE
+.PP
+
+.SS "bool handlestatus (Statusstatus)"
+
+.PP
+Error handling\&. Displays an error and returns false if status is not equal to \fBSTATUS_OK\fP 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OpenNI2 Grabber from the source code\&.

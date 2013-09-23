@@ -1,0 +1,6 @@
+<map id="openni2_grabber::getColorFrame" name="openni2_grabber::getColorFrame">
+<area shape="rect" id="node2" href="$classopenni2__grabber.html#a89a965065cb52ba8fe22a9f25f9ae2aa" title="Displays the RGB Stream fron the device. " alt="" coords="227,5,437,46"/>
+<area shape="rect" id="node3" href="$classopenni2__grabber.html#a9f8d6438213f60eae5bf6621d3ce0e13" title="Returns the RGBXYZ PointCloud. " alt="" coords="231,70,433,111"/>
+<area shape="rect" id="node4" href="$classopenni2__grabber.html#ad55054a1193a27d7b52f09be1bd872b8" title="Displays the coloured point cloud. " alt="" coords="485,37,723,78"/>
+<area shape="rect" id="node5" href="$classopenni2__grabber.html#a86b28ee285899c8e6d12ded7996b840c" title="Displays the changed points in red color. " alt="" coords="513,102,695,143"/>
+</map>

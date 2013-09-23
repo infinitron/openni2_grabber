@@ -1,0 +1,6 @@
+<map id="openni2_grabber::getRGBPointCloud" name="openni2_grabber::getRGBPointCloud">
+<area shape="rect" id="node2" href="$classopenni2__grabber.html#a47f136ad87aed37ebde513cbe32bafd0" title="Returns VideoFrameRef object for DepthStream. " alt="" coords="257,27,434,68"/>
+<area shape="rect" id="node3" href="$openni__pcl_8h.html#a95c007667de7167aa61b6cd62764c082" title="Error handling. " alt="" coords="505,34,601,61"/>
+<area shape="rect" id="node4" href="$openni__pcl_8h.html#af1c32d64b28b2b18268e6df87e766192" title="Function to act like a system pause which waits for the user to hit return key. " alt="" coords="483,100,624,126"/>
+<area shape="rect" id="node5" href="$classopenni2__grabber.html#ae5e2393706c8e79dff06f3bbc664e74f" title="Returns VideoFrameRef object which contains the color data from the device. " alt="" coords="259,92,432,134"/>
+</map>

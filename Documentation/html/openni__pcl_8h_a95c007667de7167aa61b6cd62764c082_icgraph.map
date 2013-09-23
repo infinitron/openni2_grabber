@@ -1,0 +1,22 @@
+<map id="handlestatus" name="handlestatus">
+<area shape="rect" id="node2" href="$classopenni2__grabber.html#a96d0a15989ca1466c6e5c9ada847f950" title="The default Constructor. " alt="" coords="169,5,340,46"/>
+<area shape="rect" id="node3" href="$classopenni2__grabber.html#a76c15a42b4f62afe003d5e0e7ddd6332" title="Sets the VideoMode of depthStream to defaultDepthMode. " alt="" coords="150,71,359,97"/>
+<area shape="rect" id="node4" href="$classopenni2__grabber.html#ab69a1b6650a507b3de1fb3ddf1a22541" title="Depth stream initialization. " alt="" coords="433,106,628,147"/>
+<area shape="rect" id="node5" href="$classopenni2__grabber.html#ad8403b60c6e1f34a88af4a271e2e4ed1" title="Initialize Depth and Color Streams. " alt="" coords="727,165,913,206"/>
+<area shape="rect" id="node6" href="$classopenni2__grabber.html#a49d1f3aa6c5158f8e6c291aadb281cf5" title="Sets the VideoMode of colorStream to defaultColorMode. " alt="" coords="152,223,357,249"/>
+<area shape="rect" id="node7" href="$classopenni2__grabber.html#a2de5f961c0b627dff7bac28cabc67237" title="Color Stream Initialization. " alt="" coords="435,223,626,265"/>
+<area shape="rect" id="node8" href="$classopenni2__grabber.html#aea3182bdc5e5a85adf1d906280f4b644" title="Sets the VideoMode of IRStream to defaultIRMode. " alt="" coords="161,324,348,351"/>
+<area shape="rect" id="node9" href="$classopenni2__grabber.html#a9d248ea7addd9c5d31e2d3121436d172" title="IR stream initialization. " alt="" coords="423,345,638,372"/>
+<area shape="rect" id="node10" href="$classopenni2__grabber.html#a47f136ad87aed37ebde513cbe32bafd0" title="Returns VideoFrameRef object for DepthStream. " alt="" coords="166,477,343,518"/>
+<area shape="rect" id="node13" href="$classopenni2__grabber.html#a9f8d6438213f60eae5bf6621d3ce0e13" title="Returns the RGBXYZ PointCloud. " alt="" coords="430,529,631,570"/>
+<area shape="rect" id="node16" href="$classopenni2__grabber.html#ae5e2393706c8e79dff06f3bbc664e74f" title="Returns VideoFrameRef object which contains the color data from the device. " alt="" coords="168,594,341,635"/>
+<area shape="rect" id="node18" href="$classopenni2__grabber.html#ae2b4d57fd95331a1fb7137bf922885f3" title="Returns VideoFrameRef object for IR stream. " alt="" coords="159,660,351,687"/>
+<area shape="rect" id="node20" href="$openni__pcl_8h.html#a0de8585573bd819fdb67ba33419fc1aa" title="Point cloud converter. " alt="" coords="214,425,295,452"/>
+<area shape="rect" id="node21" href="$openni__pcl_8h.html#ad9b3073e329a39fe45c42071b7ed8eca" title="Compress the cloud data. " alt="" coords="195,711,315,737"/>
+<area shape="rect" id="node11" href="$classopenni2__grabber.html#a7d0e0fe452fb5a2c23a1cd980d6c2167" title="Get point cloud data from the device. " alt="" coords="444,441,617,482"/>
+<area shape="rect" id="node12" href="$classopenni2__grabber.html#aef4c459e321e6cbba2d1d7f8f63c14ee" title="Displays the PointCloud from the device. " alt="" coords="715,441,925,482"/>
+<area shape="rect" id="node14" href="$classopenni2__grabber.html#ad55054a1193a27d7b52f09be1bd872b8" title="Displays the coloured point cloud. " alt="" coords="701,517,939,558"/>
+<area shape="rect" id="node15" href="$classopenni2__grabber.html#a86b28ee285899c8e6d12ded7996b840c" title="Displays the changed points in red color. " alt="" coords="729,582,911,623"/>
+<area shape="rect" id="node17" href="$classopenni2__grabber.html#a89a965065cb52ba8fe22a9f25f9ae2aa" title="Displays the RGB Stream fron the device. " alt="" coords="425,594,636,635"/>
+<area shape="rect" id="node19" href="$classopenni2__grabber.html#a82c859796f268f9017667b514484117b" title="Displays the IR stream from the device. " alt="" coords="408,660,653,687"/>
+</map>

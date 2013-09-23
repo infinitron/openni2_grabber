@@ -1,0 +1,8 @@
+<map id="openni2_grabber::createDualStreams" name="openni2_grabber::createDualStreams">
+<area shape="rect" id="node2" href="$classopenni2__grabber.html#ab69a1b6650a507b3de1fb3ddf1a22541" title="Depth stream initialization. " alt="" coords="240,79,435,120"/>
+<area shape="rect" id="node3" href="$openni__pcl_8h.html#af1c32d64b28b2b18268e6df87e766192" title="Function to act like a system pause which waits for the user to hit return key. " alt="" coords="741,64,883,90"/>
+<area shape="rect" id="node4" href="$openni__pcl_8h.html#a95c007667de7167aa61b6cd62764c082" title="Error handling. " alt="" coords="764,216,860,242"/>
+<area shape="rect" id="node6" href="$classopenni2__grabber.html#a2de5f961c0b627dff7bac28cabc67237" title="Color Stream Initialization. " alt="" coords="242,187,433,228"/>
+<area shape="rect" id="node5" href="$classopenni2__grabber.html#a76c15a42b4f62afe003d5e0e7ddd6332" title="Sets the VideoMode of depthStream to defaultDepthMode. " alt="" coords="483,64,693,90"/>
+<area shape="rect" id="node7" href="$classopenni2__grabber.html#a49d1f3aa6c5158f8e6c291aadb281cf5" title="Sets the VideoMode of colorStream to defaultColorMode. " alt="" coords="485,216,691,242"/>
+</map>

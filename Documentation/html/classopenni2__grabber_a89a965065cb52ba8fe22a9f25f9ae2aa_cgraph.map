@@ -1,0 +1,5 @@
+<map id="openni2_grabber::startPCLImageVisualizer" name="openni2_grabber::startPCLImageVisualizer">
+<area shape="rect" id="node2" href="$classopenni2__grabber.html#ae5e2393706c8e79dff06f3bbc664e74f" title="Returns VideoFrameRef object which contains the color data from the device. " alt="" coords="264,23,437,65"/>
+<area shape="rect" id="node3" href="$openni__pcl_8h.html#a95c007667de7167aa61b6cd62764c082" title="Error handling. " alt="" coords="508,5,604,32"/>
+<area shape="rect" id="node4" href="$openni__pcl_8h.html#af1c32d64b28b2b18268e6df87e766192" title="Function to act like a system pause which waits for the user to hit return key. " alt="" coords="485,56,627,83"/>
+</map>

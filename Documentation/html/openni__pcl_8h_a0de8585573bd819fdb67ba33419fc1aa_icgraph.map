@@ -1,0 +1,4 @@
+<map id="cloud_xyz" name="cloud_xyz">
+<area shape="rect" id="node2" href="$classopenni2__grabber.html#a7d0e0fe452fb5a2c23a1cd980d6c2167" title="Get point cloud data from the device. " alt="" coords="136,5,309,46"/>
+<area shape="rect" id="node3" href="$classopenni2__grabber.html#aef4c459e321e6cbba2d1d7f8f63c14ee" title="Displays the PointCloud from the device. " alt="" coords="358,5,567,46"/>
+</map>

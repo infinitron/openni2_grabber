@@ -1,0 +1,466 @@
+.TH "openni2_grabber" 3 "Mon Sep 23 2013" "Version 0.1.1.7" "OpenNI2 Grabber" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+openni2_grabber \- 
+.PP
+OpenNI2 Grabber class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <openni_init\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBopenni2_grabber\fP ()"
+.br
+.RI "\fIThe default Constructor\&. \fP"
+.ti -1c
+.RI "void \fBcreateDepthStream\fP ()"
+.br
+.RI "\fIDepth stream initialization\&. \fP"
+.ti -1c
+.RI "void \fBcreateColorStream\fP ()"
+.br
+.RI "\fIColor Stream Initialization\&. \fP"
+.ti -1c
+.RI "void \fBcreateIRStream\fP ()"
+.br
+.RI "\fIIR stream initialization\&. \fP"
+.ti -1c
+.RI "void \fBsetDepthMode\fP (VideoMode mode)"
+.br
+.RI "\fIThis function sets the VideoMode to be set to the Depth Stream\&. \fP"
+.ti -1c
+.RI "void \fBsetColorMode\fP (VideoMode mode)"
+.br
+.RI "\fIThis function sets the VideoMode to be set to the Color Stream\&. \fP"
+.ti -1c
+.RI "void \fBsetIRMode\fP (VideoMode mode)"
+.br
+.RI "\fIThis function sets the VideoMode for the IR stream\&. \fP"
+.ti -1c
+.RI "void \fBcreateDualStreams\fP ()"
+.br
+.RI "\fIInitialize Depth and Color Streams\&. \fP"
+.ti -1c
+.RI "VideoFrameRef \fBgetDepthFrame\fP ()"
+.br
+.RI "\fIReturns VideoFrameRef object for DepthStream\&. \fP"
+.ti -1c
+.RI "VideoFrameRef \fBgetColorFrame\fP ()"
+.br
+.RI "\fIReturns VideoFrameRef object which contains the color data from the device\&. \fP"
+.ti -1c
+.RI "VideoFrameRef \fBgetIRFrame\fP ()"
+.br
+.RI "\fIReturns VideoFrameRef object for IR stream\&. \fP"
+.ti -1c
+.RI "pcl::PointCloud< pcl::PointXYZ > \fBgetPointCloud\fP ()"
+.br
+.RI "\fIGet point cloud data from the device\&. \fP"
+.ti -1c
+.RI "pcl::PointCloud< pcl::PointXYZRGB > \fBgetRGBPointCloud\fP ()"
+.br
+.RI "\fIReturns the RGBXYZ PointCloud\&. \fP"
+.ti -1c
+.RI "void \fBstartPCLCloudVisualizer\fP ()"
+.br
+.RI "\fIDisplays the PointCloud from the device\&. \fP"
+.ti -1c
+.RI "void \fBstartPCLImageVisualizer\fP ()"
+.br
+.RI "\fIDisplays the RGB Stream fron the device\&. \fP"
+.ti -1c
+.RI "void \fBstartPCLIRVisualizer\fP ()"
+.br
+.RI "\fIDisplays the IR stream from the device\&. \fP"
+.ti -1c
+.RI "void \fBstartPCLRGBCloudVisualizer\fP ()"
+.br
+.RI "\fIDisplays the coloured point cloud\&. \fP"
+.ti -1c
+.RI "void \fBstartPointCloudChangeVisualizer\fP ()"
+.br
+.RI "\fIDisplays the changed points in red color\&. \fP"
+.ti -1c
+.RI "\fB~openni2_grabber\fP ()"
+.br
+.RI "\fIDestructor function\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "Status \fBstatus\fP"
+.br
+.RI "\fIA global variable used by the member functions to indicate the status of the calls to OpenNI\&. \fP"
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetDepthMode\fP ()"
+.br
+.RI "\fISets the VideoMode of depthStream to defaultDepthMode\&. \fP"
+.ti -1c
+.RI "void \fBsetColorMode\fP ()"
+.br
+.RI "\fISets the VideoMode of colorStream to defaultColorMode\&. \fP"
+.ti -1c
+.RI "void \fBsetIRMode\fP ()"
+.br
+.RI "\fISets the VideoMode of IRStream to defaultIRMode\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "Array< DeviceInfo > \fBdevinfo\fP"
+.br
+.RI "\fI\fBopenni::Array\fP to store the information about devices \fP"
+.ti -1c
+.RI "bool \fBisDepthModeSet\fP"
+.br
+.RI "\fITrue if depthMode is set\&. \fP"
+.ti -1c
+.RI "bool \fBisColorModeSet\fP"
+.br
+.RI "\fITrue if colorMode is set\&. \fP"
+.ti -1c
+.RI "bool \fBisIRModeSet\fP"
+.br
+.RI "\fITure if IRMode is set\&. \fP"
+.ti -1c
+.RI "bool \fBisDepthStream\fP"
+.br
+.RI "\fITrue if the DepthStream in started for the device\&. \fP"
+.ti -1c
+.RI "bool \fBisColorStream\fP"
+.br
+.RI "\fITrue if ColorStream is started for the device\&. \fP"
+.ti -1c
+.RI "bool \fBisIRStream\fP"
+.br
+.RI "\fITrue if IR stream is started for the device\&. \fP"
+.ti -1c
+.RI "bool \fBisSyncReg\fP"
+.br
+.RI "\fITrue if Depth to Color Sync and Depth to color Image Registration both are enabled\&. \fP"
+.ti -1c
+.RI "Device \fBdevice\fP"
+.br
+.RI "\fIObject of type \fBopenni::Device\fP which stores device to be used\&. \fP"
+.ti -1c
+.RI "VideoStream \fBdepthSensor\fP"
+.br
+.RI "\fIStores the VideoStream object for the depthSensor\&. \fP"
+.ti -1c
+.RI "VideoStream \fBcolorSensor\fP"
+.br
+.RI "\fIStores the VideoStream object for the ColorSensor\&. \fP"
+.ti -1c
+.RI "VideoStream \fBIRSensor\fP"
+.br
+.RI "\fIStores the VideoStream object for the IRSensor\&. \fP"
+.ti -1c
+.RI "VideoMode \fBdepthMode\fP"
+.br
+.RI "\fIStores the VideoMode object for the DepthStream\&. \fP"
+.ti -1c
+.RI "VideoMode \fBcolorMode\fP"
+.br
+.RI "\fIStores the VideoMode object for the ColorStream\&. \fP"
+.ti -1c
+.RI "VideoMode \fBIRMode\fP"
+.br
+.RI "\fIStores the VideoMode object for IRStream\&. \fP"
+.ti -1c
+.RI "VideoFrameRef \fBdepthFrame\fP"
+.br
+.RI "\fIDepthFrame data container\&. \fP"
+.ti -1c
+.RI "VideoFrameRef \fBcolorFrame\fP"
+.br
+.RI "\fIColorFrame data container\&. \fP"
+.ti -1c
+.RI "VideoFrameRef \fBIRFrame\fP"
+.br
+.RI "\fIIR frame Data container\&. \fP"
+.ti -1c
+.RI "VideoMode \fBdefaultDepthMode\fP"
+.br
+.RI "\fIThe default VideoMode for the depthStream\&. \fP"
+.ti -1c
+.RI "VideoMode \fBdefaultColorMode\fP"
+.br
+.RI "\fIThe default VideoMode for the colorStream\&. \fP"
+.ti -1c
+.RI "VideoMode \fBdefaultIRMode\fP"
+.br
+.RI "\fIThe default VideoMode for the colorStream\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+OpenNI2 Grabber class\&. 
+
+This class contains the functions to use the data from OpenNI supported devices such as Microsoft Kinect and ASUS Xtion Pro\&. It uses various functions from the Point Cloud Library (PCL) for better visualization and also to avoid working with low level commands from OpenGL\&. 
+.PP
+Definition at line 14 of file openni_init\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "openni2_grabber::openni2_grabber ()"
+
+.PP
+The default Constructor\&. The constructor automatically initializes and loads the drivers necessary to acquire data from the supported devices\&. By default it loads the first device that appears in the list of connected devices\&. 
+.SS "openni2_grabber::~openni2_grabber ()"
+
+.PP
+Destructor function\&. Destroys the streams, closes the device(s) and shutdowns the OpenNI modules 
+.SH "Member Function Documentation"
+.PP 
+.SS "void openni2_grabber::createColorStream ()"
+
+.PP
+Color Stream Initialization\&. This function initializes the color stream from the device\&. It uses the default Videomode object defaultColorMode if no video mode is set\&. VideoMode can also be set manually by calling \fBsetColorMode(VideoMode mode)\fP\&. This function must be called before starting data aquisition from the color sensor\&. 
+.SS "void openni2_grabber::createDepthStream ()"
+
+.PP
+Depth stream initialization\&. This function initlializes the depth stream from the device\&. If no video mode is supplied it uses the defafult VideoMode object \fBopenni2_grabber::defaultDepthMode\fP\&. VideoMode can also be set manually by calling the function \fBsetDepthMode(VideoMode mode)\fP\&. This fuction must be called before starting data aquisition from the depth sensor 
+.SS "void openni2_grabber::createDualStreams ()"
+
+.PP
+Initialize Depth and Color Streams\&. It also enables Depth to Color Synchronization\&. The Image registration mode will be set to \fBopenni::IMAGE_REGISTRATION_DEPTH_TO_COLOR\fP\&. 
+.SS "void openni2_grabber::createIRStream ()"
+
+.PP
+IR stream initialization\&. This function initializes IR stream from the device\&. It uses the default videomode if no videoMode is set\&. VideoMode can also be set manually using \fBsetIRMode(VideoMode mode)\fP\&. This function must be called before startig data acquisition from the IR sensor\&. 
+.SS "VideoFrameRef openni2_grabber::getColorFrame ()"
+
+.PP
+Returns VideoFrameRef object which contains the color data from the device\&. createColorStream must be called before starting data acquisition 
+.SS "VideoFrameRef openni2_grabber::getDepthFrame ()"
+
+.PP
+Returns VideoFrameRef object for DepthStream\&. It returns VideoFrameRef object contains the depth data from the device\&. \fBcreateDepthStream()\fP must be called before calling this function\&. 
+.SS "VideoFrameRef openni2_grabber::getIRFrame ()"
+
+.PP
+Returns VideoFrameRef object for IR stream\&. \fBcreateIRStream()\fP must be called before starting IR data acqisition 
+.SS "pcl::PointCloud<pcl::PointXYZ> openni2_grabber::getPointCloud ()"
+
+.PP
+Get point cloud data from the device\&. This funtion returns the point cloud generated using the depth data from the device\&. \fBcreateDepthStream()\fP must be called before using this function The cloud will be of the type \fBpcl::PointCloud<pcl::PointXYZ>\fP\&. 
+.SS "pcl::PointCloud<pcl::PointXYZRGB> openni2_grabber::getRGBPointCloud ()"
+
+.PP
+Returns the RGBXYZ PointCloud\&. This function returns the RGB PointCloud generated using the Depth and Color streams from the device\&. Either \fBcreateDepthStream()\fP and \fBcreateColorStream()\fP both or create \fBcreateDualStreams()\fP must be called before using this funtion\&. The data returned will be of the type \fBpcl::PointCloud<pcl::PointXYZRGB>\fP\&. 
+.SS "void openni2_grabber::setColorMode (VideoModemode)"
+
+.PP
+This function sets the VideoMode to be set to the Color Stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImode\fP An object of type openni::VideoMode 
+.RE
+.PP
+
+.SS "void openni2_grabber::setDepthMode (VideoModemode)"
+
+.PP
+This function sets the VideoMode to be set to the Depth Stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImode\fP An object of type openni::VideoMode 
+.RE
+.PP
+
+.SS "void openni2_grabber::setIRMode (VideoModemode)"
+
+.PP
+This function sets the VideoMode for the IR stream\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImode\fP An object of type openni::VideoMode 
+.RE
+.PP
+
+.SS "void openni2_grabber::startPCLCloudVisualizer ()"
+
+.PP
+Displays the PointCloud from the device\&. This function displays the point cloud using the DepthStream of the device\&. \fBcreateDepthStream()\fP must be called before displaying the point cloud\&. Point size of the cloud is 1\&. The parameter of the coordinate system is 1\&.0\&. The PointCloud is rotated 180 degrees about the Y axis and translated -2000 units along the Z axis for better visualization 
+.SS "void openni2_grabber::startPCLImageVisualizer ()"
+
+.PP
+Displays the RGB Stream fron the device\&. This fuction displays the RGB Image stream from the device\&. \fBcreateColorStream()\fP must be called before displaying the stream\&. 
+.SS "void openni2_grabber::startPCLIRVisualizer ()"
+
+.PP
+Displays the IR stream from the device\&. This function displays the IR stream from the device\&. \fBcreateIRStream()\fP must be called before starting visualization 
+.SS "void openni2_grabber::startPCLRGBCloudVisualizer ()"
+
+.PP
+Displays the coloured point cloud\&. This function displays the coloured point cloud using the data from the device\&.Either \fBcreateDepthStream()\fP and \fBcreateColorStream()\fP both or create \fBcreateDualStreams()\fP must be called before using this funtion\&. Calling \fBcreateDualStreams()\fP enables Depth to Color sync and Image registration\&. The \fBPCLVisualizer\fP will have same parameters as that used in \fBstartPCLCloudVisualizer()\fP 
+.SS "void openni2_grabber::startPointCloudChangeVisualizer ()"
+
+.PP
+Displays the changed points in red color\&. This function uses \fBpcl::octree::OctreePointCloudChangeDetector\fP class to detect the changes in point cloud\&. Both the streams must be enabled before calling this function 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBstartPCLCloudVisualizer()\fP 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "VideoFrameRef openni2_grabber::colorFrame\fC [protected]\fP"
+
+.PP
+ColorFrame data container\&. Contains the color data read by calling the function \fBopenni::Videostream\&.readFrame(&VideoFrameRef)\fP 
+.PP
+Definition at line 155 of file openni_init\&.h\&.
+.SS "VideoMode openni2_grabber::colorMode\fC [protected]\fP"
+
+.PP
+Stores the VideoMode object for the ColorStream\&. This can be set by calling \fBsetColorMode(VideoMode mode)\fP function 
+.PP
+Definition at line 146 of file openni_init\&.h\&.
+.SS "VideoStream openni2_grabber::colorSensor\fC [protected]\fP"
+
+.PP
+Stores the VideoStream object for the ColorSensor\&. This object is initialized by calling \fBcreateColorStream()\fP function 
+.PP
+Definition at line 137 of file openni_init\&.h\&.
+.SS "VideoMode openni2_grabber::defaultColorMode\fC [protected]\fP"
+
+.PP
+The default VideoMode for the colorStream\&. \fBFrame rate:\fP 30fps 
+.br
+\fBScreen Resolution:\fP 640 x 480 
+.br
+\fBPixel Format:\fP RGB888PIXEL 
+.br
+
+.PP
+Definition at line 172 of file openni_init\&.h\&.
+.SS "VideoMode openni2_grabber::defaultDepthMode\fC [protected]\fP"
+
+.PP
+The default VideoMode for the depthStream\&. \fBFrame rate:\fP 30fps 
+.br
+\fBScreen Resolution:\fP 640 x 480 
+.br
+\fBPixel Format:\fP PIXEL_FORMAT_DEPTH_1_MM 
+.br
+
+.PP
+Definition at line 165 of file openni_init\&.h\&.
+.SS "VideoMode openni2_grabber::defaultIRMode\fC [protected]\fP"
+
+.PP
+The default VideoMode for the colorStream\&. \fBFrame rate:\fP 30fps 
+.br
+\fBScreen Resolution:\fP 640 x 480 
+.br
+\fBPixel Format:\fP PIXEL_FORMAT_GRAY16 
+.br
+
+.PP
+Definition at line 179 of file openni_init\&.h\&.
+.SS "VideoFrameRef openni2_grabber::depthFrame\fC [protected]\fP"
+
+.PP
+DepthFrame data container\&. Contains the depth data read by calling the function \fBopenni::Videostream\&.readFrame(&VideoFrameRef)\fP 
+.PP
+Definition at line 152 of file openni_init\&.h\&.
+.SS "VideoMode openni2_grabber::depthMode\fC [protected]\fP"
+
+.PP
+Stores the VideoMode object for the DepthStream\&. This can be set by calling \fBsetColorMode(VideoMode mode)\fP function 
+.PP
+Definition at line 143 of file openni_init\&.h\&.
+.SS "VideoStream openni2_grabber::depthSensor\fC [protected]\fP"
+
+.PP
+Stores the VideoStream object for the depthSensor\&. This object is initialized by calling \fBcreateDepthStream()\fP function 
+.PP
+Definition at line 134 of file openni_init\&.h\&.
+.SS "VideoMode openni2_grabber::IRMode\fC [protected]\fP"
+
+.PP
+Stores the VideoMode object for IRStream\&. This can be set by calling \fBsetIRMode(VideoMode mode)\fP function 
+.PP
+Definition at line 149 of file openni_init\&.h\&.
+.SS "VideoStream openni2_grabber::IRSensor\fC [protected]\fP"
+
+.PP
+Stores the VideoStream object for the IRSensor\&. This object is initialized by calling \fBcreateIRStream()\fP function 
+.PP
+Definition at line 140 of file openni_init\&.h\&.
+.SS "bool openni2_grabber::isColorModeSet\fC [protected]\fP"
+
+.PP
+True if colorMode is set\&. The colorMode can be set manually by calling the function \fBsetColorMode(VideoMode mode)\fP\&. 
+.PP
+Definition at line 111 of file openni_init\&.h\&.
+.SS "bool openni2_grabber::isColorStream\fC [protected]\fP"
+
+.PP
+True if ColorStream is started for the device\&. The pixel format will be of the type \fBRGB888PIXEL\fP 
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBcreateColorStream()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 122 of file openni_init\&.h\&.
+.SS "bool openni2_grabber::isDepthModeSet\fC [protected]\fP"
+
+.PP
+True if depthMode is set\&. The depthMode can be set manually by calling the function \fBsetDepthMode(VideoMode mode)\fP\&. 
+.PP
+Definition at line 108 of file openni_init\&.h\&.
+.SS "bool openni2_grabber::isDepthStream\fC [protected]\fP"
+
+.PP
+True if the DepthStream in started for the device\&. The pixel format will be of the type \fBPIXEL_FORMAT_DEPTH_1_MM\fP
+.PP
+\fBSee Also:\fP
+.RS 4
+\fBcreateDepthStream()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 117 of file openni_init\&.h\&.
+.SS "bool openni2_grabber::isIRModeSet\fC [protected]\fP"
+
+.PP
+Ture if IRMode is set\&. This can be set manually by caling \fBsetIRMode(VideoMode mode)\fP 
+.PP
+Definition at line 114 of file openni_init\&.h\&.
+.SS "bool openni2_grabber::isIRStream\fC [protected]\fP"
+
+.PP
+True if IR stream is started for the device\&. Pixel format will be \fBPIXEL_FORMAT_GRAY16\fP 
+.PP
+Definition at line 125 of file openni_init\&.h\&.
+.SS "bool openni2_grabber::isSyncReg\fC [protected]\fP"
+
+.PP
+True if Depth to Color Sync and Depth to color Image Registration both are enabled\&. This will be set to true when \fBcreateDualStreams()\fP is called 
+.PP
+Definition at line 128 of file openni_init\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for OpenNI2 Grabber from the source code\&.

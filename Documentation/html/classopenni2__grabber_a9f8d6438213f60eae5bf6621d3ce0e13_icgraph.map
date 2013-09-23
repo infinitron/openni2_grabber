@@ -1,0 +1,4 @@
+<map id="openni2_grabber::getRGBPointCloud" name="openni2_grabber::getRGBPointCloud">
+<area shape="rect" id="node2" href="$classopenni2__grabber.html#ad55054a1193a27d7b52f09be1bd872b8" title="Displays the coloured point cloud. " alt="" coords="256,5,493,46"/>
+<area shape="rect" id="node3" href="$classopenni2__grabber.html#a86b28ee285899c8e6d12ded7996b840c" title="Displays the changed points in red color. " alt="" coords="284,70,465,111"/>
+</map>

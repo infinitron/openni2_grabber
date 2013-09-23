@@ -44,8 +44,10 @@ openni2_grabber::openni2_grabber()/* : viewer("Kinect Depth Map"),imageViewer("K
 
 	isDepthModeSet = false;
 	isColorModeSet = false;
+	isIRModeSet = false;
 	isDepthStream = false;
 	isColorStream = false;
+	isIRStream = false;
 	isSyncReg = false;
 
 	this->defaultDepthMode.setFps(30);
@@ -55,6 +57,10 @@ openni2_grabber::openni2_grabber()/* : viewer("Kinect Depth Map"),imageViewer("K
 	this->defaultColorMode.setFps(30);
 	this->defaultColorMode.setPixelFormat(PIXEL_FORMAT_RGB888);
 	this->defaultColorMode.setResolution(640,480);
+
+	this->defaultIRMode.setFps(30);
+	this->defaultIRMode.setPixelFormat(PIXEL_FORMAT_GRAY16);
+	this->defaultIRMode.setResolution(640,480);
 
 };
 
@@ -73,6 +79,17 @@ void openni2_grabber::setColorMode()
 {
 	status = colorSensor.setVideoMode(defaultColorMode);
 	isColorModeSet = true;
+	if(!handlestatus(status))
+	{
+		ReadLastCharOfLine();
+		exit(EXIT_FAILURE);
+	}
+};
+
+void openni2_grabber::setIRMode()
+{
+	status = IRSensor.setVideoMode(defaultIRMode);
+	isIRModeSet = true;
 	if(!handlestatus(status))
 	{
 		ReadLastCharOfLine();
@@ -104,6 +121,18 @@ void openni2_grabber::setColorMode(VideoMode mode)
 	}
 };
 
+void openni2_grabber::setIRMode(VideoMode mode)
+{
+	IRMode = mode;
+	status = IRSensor.setVideoMode(mode);
+	isIRModeSet = true;
+	if(!handlestatus(status))
+	{
+		ReadLastCharOfLine();
+		exit(EXIT_FAILURE);
+	}
+};
+
 void openni2_grabber::createDepthStream()
 {
 	std::cout<<"Requesting depth stream..\n";
@@ -114,6 +143,8 @@ void openni2_grabber::createDepthStream()
     else
     {
         std::cout<<"Depth sensor not available..\n";
+		ReadLastCharOfLine();
+		exit(EXIT_FAILURE);
     }
 	std::cout<<"Creating Depth stream..\n";
 	status = depthSensor.create(device,SENSOR_DEPTH);
@@ -139,6 +170,13 @@ void openni2_grabber::createDepthStream()
 void openni2_grabber::createColorStream()
 {
 	std::cout<<"Requesting color stream..\n";
+	if(IRSensor.isValid())
+	{
+		std::cout<<"Warning! cannot use IR and color streams at the same time..\nStutting down IR stream..\n";
+		IRSensor.stop();
+		IRSensor.destroy();
+		isIRStream = false;
+	}
 	if(device.hasSensor(SENSOR_COLOR))
     {
         std::cout<<"Color sensor available..\n";
@@ -146,6 +184,8 @@ void openni2_grabber::createColorStream()
     else
     {
         std::cout<<"Color sensor not available..\n";
+		ReadLastCharOfLine();
+		exit(EXIT_FAILURE);
     }
 	std::cout<<"Creating Color stream..\n";
 	status = colorSensor.create(device,SENSOR_COLOR);
@@ -159,13 +199,50 @@ void openni2_grabber::createColorStream()
 	if(!isDepthModeSet) this->setColorMode();
 	std::cout<<"Starting the Color stream..\n";
 	status = colorSensor.start();
-	 if(!handlestatus(status))
+	if(!handlestatus(status))
 	{
 		ReadLastCharOfLine();
 		exit(EXIT_FAILURE);
 	}
 	 isColorStream = true;
 	 std::cout<<"Done..\n";
+};
+
+void openni2_grabber::createIRStream()
+{
+	std::cout<<"Requesting IR stream..\n";
+	if(colorSensor.isValid())
+	{
+		std::cout<<"Warning! cannot use IR and color streams at the same time..\nStutting down Color stream..\n";
+		colorSensor.stop();
+		colorSensor.destroy();
+		isColorStream = false;
+	}
+	if(!device.hasSensor(SENSOR_IR))
+	{
+		std::cout<<"IR sensor not available..\n";
+		exit(EXIT_FAILURE);
+	}
+	std::cout<<"Creating IR stream..\n";
+	status = IRSensor.create(device,SENSOR_IR);
+	if(!handlestatus(status))
+	{
+		ReadLastCharOfLine();
+		exit(EXIT_FAILURE);
+	}
+	std::cout<<"Done..\n";
+	std::cout<<"Setting videomode..\n";
+	if(!isIRModeSet) this->setIRMode();
+	std::cout<<"Starting IR stream..\n";
+	status = IRSensor.start();
+	if(!handlestatus(status))
+	{
+		std::cout<<status;
+		ReadLastCharOfLine();
+		exit(EXIT_FAILURE);
+	}
+	isIRStream = true;
+	std::cout<<"Done..\n";
 };
 
 void openni2_grabber::createDualStreams()
@@ -212,7 +289,7 @@ VideoFrameRef openni2_grabber::getDepthFrame()
 	if(isDepthStream)
 	{
 		status = depthSensor.readFrame(&depthFrame);
-		if(!depthFrame.isValid()) std::cout<<"No valid data read..Check Device connection..\n";
+		if(!depthFrame.isValid()) std::cout<<"No valid depth data read..Check Device connection..\n";
 		if(!handlestatus(status))
 		{
 			ReadLastCharOfLine();
@@ -222,6 +299,7 @@ VideoFrameRef openni2_grabber::getDepthFrame()
 	else
 	{
 		std::cout<<"No depth stream found..Please start the depth stream...\n";
+		ReadLastCharOfLine();
 		exit(EXIT_FAILURE);
 	}
 	return depthFrame;
@@ -232,7 +310,7 @@ VideoFrameRef openni2_grabber::getColorFrame()
 	if(isColorStream)
 	{
 		status = colorSensor.readFrame(&colorFrame);
-		if(!colorFrame.isValid()) std::cout<<"No valid data read..Check Device connection..\n";
+		if(!colorFrame.isValid()) std::cout<<"No valid color data read..Check Device connection..\n";
 		if(!handlestatus(status))
 		{
 			ReadLastCharOfLine();
@@ -242,9 +320,31 @@ VideoFrameRef openni2_grabber::getColorFrame()
 	else
 	{
 		std::cout<<"No color stream found..Please start the color stream...\n";
+		ReadLastCharOfLine();
 		exit(EXIT_FAILURE);
 	}
 	return colorFrame;
+};
+
+VideoFrameRef openni2_grabber::getIRFrame()
+{
+	if(isIRStream)
+	{
+		status = IRSensor.readFrame(&IRFrame);
+		if(!IRFrame.isValid()) std::cout<<"No valid  IR data read...check device connection..\n";
+		if(!handlestatus(status))
+		{
+			ReadLastCharOfLine();
+			exit(EXIT_FAILURE);
+		}
+	}
+	else
+	{
+		std::cout<<"No color stream found..Please start the IR stream...\n";
+		ReadLastCharOfLine();
+		exit(EXIT_FAILURE);
+	}
+	return IRFrame;
 };
 
 pcl::PointCloud<pcl::PointXYZ> openni2_grabber::getPointCloud()
@@ -256,11 +356,18 @@ openni2_grabber::~openni2_grabber()
 {
 	if(isColorStream)
 	{
+		colorSensor.stop();
 		colorSensor.destroy();
 	}
 	if(isDepthStream)
 	{
+		depthSensor.stop();
 		depthSensor.destroy();
+	}
+	if(isIRStream)
+	{
+		IRSensor.stop();
+		IRSensor.destroy();
 	}
 	device.close();
 	OpenNI::shutdown();
@@ -294,7 +401,7 @@ void openni2_grabber::startPCLCloudVisualizer()
 		viewer.updatePointCloud(depthCloud,"depthmap");
 		boost::this_thread::sleep(boost::posix_time::milliseconds(30));
 	}
-}
+};
 
 void openni2_grabber::startPCLImageVisualizer()
 {
@@ -311,7 +418,23 @@ void openni2_grabber::startPCLImageVisualizer()
 		imageViewer.addRGBImage((unsigned char*)getColorFrame().getData(),colorFrame.getWidth(),colorFrame.getHeight(),"rgbImage");
 		boost::this_thread::sleep(boost::posix_time::milliseconds(30));
 	}
-}
+};
+
+void openni2_grabber::startPCLIRVisualizer()
+{
+	pcl::visualization::ImageViewer IRViewer;
+	IRViewer.setWindowTitle("Kinect IR Stream");
+	std::cout<<"Starting PCl Visualizer of IR stream..\n";
+	IRViewer.addMonoImage((unsigned char*)getIRFrame().getData(),IRFrame.getWidth(),IRFrame.getHeight(),"IRImage");
+	while(!IRViewer.wasStopped())
+	{
+		IRViewer.spinOnce(30);
+		IRViewer.removeLayer("IRImage");
+		IRViewer.addLayer("IRImage",IRFrame.getWidth(),IRFrame.getHeight());
+		IRViewer.addMonoImage((unsigned char*)getIRFrame().getData(),IRFrame.getWidth(),IRFrame.getHeight(),"IRImage");
+		boost::this_thread::sleep(boost::posix_time::milliseconds(30));
+	}
+};
 
 pcl::PointCloud<pcl::PointXYZRGB> openni2_grabber::getRGBPointCloud()
 {
@@ -354,7 +477,7 @@ pcl::PointCloud<pcl::PointXYZRGB> openni2_grabber::getRGBPointCloud()
 		}
 	}
 	return cloud;
-}
+};
 
 void openni2_grabber::startPCLRGBCloudVisualizer()
 {
@@ -383,7 +506,7 @@ void openni2_grabber::startPCLRGBCloudVisualizer()
 		viewer.updatePointCloud(depthCloud,"RGBdepthmap");
 		boost::this_thread::sleep(boost::posix_time::milliseconds(30));
 	}
-}
+};
 
 void openni2_grabber::startPointCloudChangeVisualizer()
 {
@@ -440,4 +563,4 @@ void openni2_grabber::startPointCloudChangeVisualizer()
 		boost::this_thread::sleep(boost::posix_time::milliseconds(30));
 		octree.switchBuffers();
 	}
-}
+};

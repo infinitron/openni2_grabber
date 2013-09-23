@@ -1,0 +1,7 @@
+<map id="openni2_grabber::getDepthFrame" name="openni2_grabber::getDepthFrame">
+<area shape="rect" id="node2" href="$classopenni2__grabber.html#a7d0e0fe452fb5a2c23a1cd980d6c2167" title="Get point cloud data from the device. " alt="" coords="247,5,420,46"/>
+<area shape="rect" id="node4" href="$classopenni2__grabber.html#a9f8d6438213f60eae5bf6621d3ce0e13" title="Returns the RGBXYZ PointCloud. " alt="" coords="233,70,434,111"/>
+<area shape="rect" id="node3" href="$classopenni2__grabber.html#aef4c459e321e6cbba2d1d7f8f63c14ee" title="Displays the PointCloud from the device. " alt="" coords="497,5,706,46"/>
+<area shape="rect" id="node5" href="$classopenni2__grabber.html#ad55054a1193a27d7b52f09be1bd872b8" title="Displays the coloured point cloud. " alt="" coords="483,70,720,111"/>
+<area shape="rect" id="node6" href="$classopenni2__grabber.html#a86b28ee285899c8e6d12ded7996b840c" title="Displays the changed points in red color. " alt="" coords="511,135,692,177"/>
+</map>
