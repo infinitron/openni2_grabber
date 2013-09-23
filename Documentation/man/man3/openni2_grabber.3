@@ -1,4 +1,4 @@
-.TH "openni2_grabber" 3 "Mon Sep 23 2013" "Version 0.1.1.7" "OpenNI2 Grabber" \" -*- nroff -*-
+.TH "openni2_grabber" 3 "Mon Sep 23 2013" "Version 0.1.2" "OpenNI2 Grabber" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -392,6 +392,12 @@ Definition at line 143 of file openni_init\&.h\&.
 Stores the VideoStream object for the depthSensor\&. This object is initialized by calling \fBcreateDepthStream()\fP function 
 .PP
 Definition at line 134 of file openni_init\&.h\&.
+.SS "VideoFrameRef openni2_grabber::IRFrame\fC [protected]\fP"
+
+.PP
+IR frame Data container\&. Contains the IR frame data read by calling the function \fBopenni::Videostream\&.readFrame(&VideoFrameRef)\fP 
+.PP
+Definition at line 158 of file openni_init\&.h\&.
 .SS "VideoMode openni2_grabber::IRMode\fC [protected]\fP"
 
 .PP

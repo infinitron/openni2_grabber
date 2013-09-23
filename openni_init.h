@@ -154,7 +154,7 @@ protected:
 	/*!Contains the color data read by calling the function <B>openni::Videostream.readFrame(&VideoFrameRef)</B>*/
 	VideoFrameRef colorFrame;
 	//!IR frame Data container
-	/*Contains the IR frame data read by calling the function <B>openni::Videostream.readFrame(&VideoFrameRef)</B>*/
+	/*!Contains the IR frame data read by calling the function <B>openni::Videostream.readFrame(&VideoFrameRef)</B>*/
 	VideoFrameRef IRFrame;
 	//!The default VideoMode for the depthStream
 	/*!
